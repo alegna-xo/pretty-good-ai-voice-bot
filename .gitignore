@@ -1,0 +1,13 @@
+.env
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+outputs/recordings/*.mp3
+outputs/recordings/*.wav
+outputs/transcripts/*.txt
+outputs/transcripts/*.json
+*.egg-info/
+.DS_Store
