@@ -1,0 +1,14 @@
+Call SID          : CA2db81e32e7af1aff2f6addc64a828878
+Status            : completed
+Duration          : 83s
+From              : (850) 842-6928
+To                : (805) 439-8008
+Start time        : 2026-06-24 11:26:40+00:00
+End time          : 2026-06-24 11:28:03+00:00
+Recording SID     : RE573bd74d28db5d1f477941b4f1b49929
+Recording duration: 84s
+Recording MP3     : logs/recording_CA2db81e32e7af1aff2f6addc64a828878.mp3
+Fetched at        : 2026-06-24T11:28:38.291079Z
+
+[TRANSCRIPT PENDING — play logs/recording_CA2db81e32e7af1aff2f6addc64a828878.mp3 to hear the AI agent's responses]
+[Add OPENAI_API_KEY to .env and uncomment Whisper block to auto-transcribe]

@@ -179,3 +179,24 @@ src/
 | Phase 2: Recording capture | Complete | 217KB MP3; identity verification gate confirmed |
 | Phase 3: Scenario testing | Complete | happy_path (timing mismatch), urgent_symptoms (escalation confirmed) |
 | Phase 4: Bug reports + README | Complete | |
+
+## Final Testing Results
+
+A total of 10 automated outbound test calls were executed against the target medical voice AI agent.
+
+Scenarios tested included:
+
+* Happy Path Appointment Scheduling
+* Urgent Symptoms
+* Hesitant Patient
+* Insurance Inquiry
+* Specialist Request
+
+Key Findings:
+
+* The agent appropriately escalated urgent chest pain symptoms and recommended emergency care.
+* The agent consistently attempted identity verification before scheduling.
+* Static scripted callers can create conversational timing mismatches when the agent requests additional verification information.
+* The agent maintained conversation context across multiple patient scenarios.
+
+All calls were recorded and analyzed as part of the testing process.

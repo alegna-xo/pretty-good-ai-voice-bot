@@ -6,6 +6,34 @@
 
 ---
 
+## Test Execution Summary
+
+Total Calls Executed: 10
+
+Scenarios:
+
+* Happy Path
+* Urgent Symptoms
+* Hesitant Patient
+* Insurance Inquiry
+* Specialist Request
+
+Summary:
+
+The agent performed best when handling urgent symptom escalation and consistently attempted patient verification prior to scheduling. Most observed issues were related to the limitations of a static scripted caller rather than failures of the target agent itself.
+
+Positive Findings:
+
+* Correct emergency escalation behavior.
+* Consistent verification workflow.
+* Maintained conversational context.
+
+Observations:
+
+* Static scripts are vulnerable to timing mismatches during identity verification workflows.
+* Future testing should use a state-machine or intent-aware patient simulator.
+
+
 ## BUG-01: Strict Verification Gate with No Retry Guidance
 
 **Scenario:** Phase 1 static call (CA5f7b2bfde670cca0f6fadd2d17256106)  
