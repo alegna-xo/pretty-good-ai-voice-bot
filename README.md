@@ -6,6 +6,11 @@ Automated patient simulator that places outbound calls to an AI scheduling agent
 
 ---
 
+## Project Walkthrough
+
+Loom Video:
+https://www.loom.com/share/b74be4f3ac6445cb91d1c98a47d71297
+
 ## How It Works
 
 The bot places a Twilio outbound call with a static TwiML script. Each script is a patient "scenario" — a sequence of utterances timed to match the agent's expected verification and scheduling flow, calibrated from live call recordings.
