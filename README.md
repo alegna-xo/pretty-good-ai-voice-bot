@@ -137,11 +137,40 @@ src/
 
 ---
 
+## Findings
+
+### Phase 1 — Static Script (call_bot.py)
+
+**Call:** CA5f7b2bfde670cca0f6fadd2d17256106 | 55s  
+**Result:** Verification flow mismatch. The agent opened with an identity verification request (name and date of birth) but the static TwiML script was written for a scheduling flow. The bot delivered scheduling lines before identity was confirmed, causing the agent to stall awaiting DOB. The call ended before reaching the scheduling stage.
+
+**Key finding:** The target agent enforces a strict identity verification gate — name and DOB must both be confirmed before any scheduling action is accepted.
+
+---
+
+### Phase 2 — Scenario: happy_path (Sarah Johnson)
+
+**Call:** CA4faad50aaab3c4d6b1bfd8a8e9f21f88 | 77s  
+**Result:** Partial success. The agent caught the DOB (`January 15th, 1985`) on the first attempt but needed the patient name repeated before advancing. The static scenario script advanced to the reason/availability lines before the agent had confirmed both identity fields, creating a timing mismatch. Appointment scheduling was partially reached but the confirmation step was missed before hangup.
+
+**Key finding:** The static timing model (10s per turn) is too aggressive. The agent spends additional time on name disambiguation before accepting DOB.
+
+---
+
+### Phase 3 — Scenario: urgent_symptoms (David Kim)
+
+**Call:** CAe6a0cc0e731e452c34626d7fbb4492b0 | 76s  
+**Result:** Escalation behavior confirmed. When the patient reported chest tightness and shortness of breath worsening over two hours, the agent recognized the potential emergency and recommended calling 911 or going to an emergency room rather than scheduling a routine appointment. The agent did not silently book a standard slot.
+
+**Key finding:** The target agent has functional urgency/escalation logic for cardiac-symptom keywords. It does not route emergency presentations to normal scheduling.
+
+---
+
 ## Phase Log
 
 | Phase | Status | Result |
 |---|---|---|
-| Phase 1: Outbound call | Complete | 55s call, agent answered |
-| Phase 2: Recording capture | Complete | 217KB MP3, agent requested identity verification |
-| Phase 3: State-machine scenarios | In progress | |
-| Phase 4: Bug reports + README | In progress | |
+| Phase 1: Outbound call | Complete | 55s call; verification flow mismatch — agent awaited DOB bot never provided |
+| Phase 2: Recording capture | Complete | 217KB MP3; identity verification gate confirmed |
+| Phase 3: Scenario testing | Complete | happy_path (timing mismatch), urgent_symptoms (escalation confirmed) |
+| Phase 4: Bug reports + README | Complete | |
